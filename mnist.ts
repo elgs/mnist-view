@@ -1,6 +1,5 @@
 const size = 28;
-const imageIndex = parseInt(Deno.args[0]);
-
+const imageIndex = parseInt(Deno.args[0]) || 0;
 
 const labelFile = Deno.openSync('./mnist/train-labels-idx1-ubyte');
 Deno.seekSync(labelFile.rid, 8 + imageIndex, Deno.SeekMode.Start);
@@ -22,4 +21,5 @@ for (let i = 0; i < size; ++i) {
    console.log(row.join(''));
 }
 
-console.log(bufLable[0]);
+console.log('index: ', imageIndex);
+console.log('lable: ', bufLable[0]);
